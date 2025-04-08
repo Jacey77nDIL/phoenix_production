@@ -11,11 +11,37 @@ export default function WaitlistPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add validation or backend logic here
-    router.push('/waitlist-success');
+
+    const data = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/add_to_waitlist/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log('Success:', result.message);
+        router.push('/waitlist-success');
+      } else {
+        console.log('Error submitting form:', result);
+      }
+    } catch (error) {
+      console.error('Network/server error:', error);
+    }
   };
+
 
   return (
     <main className="min-h-screen bg-gradient-to-r from-green-200 to-white flex items-center justify-center relative px-4">
