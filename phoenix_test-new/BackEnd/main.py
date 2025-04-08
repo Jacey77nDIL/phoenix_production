@@ -36,7 +36,6 @@ class Waitlist(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     email = Column(String)
-    phone = Column(String)
 
 
 # Create tables in the database (if not already created)
@@ -48,7 +47,6 @@ Base.metadata.create_all(bind=engine)
 class WaitlistCreate(BaseModel):
     name: str
     email: str
-    phone: str
 
 
 @app.post("/add_to_waitlist/")
@@ -58,7 +56,6 @@ async def add_to_waitlist(entry: WaitlistCreate):
         new_entry = Waitlist(
             name=entry.name,
             email=entry.email,
-            phone=entry.phone,
         )
         db.add(new_entry)
         db.commit()

@@ -5,7 +5,8 @@ import { useState } from 'react';
 
 export default function WaitlistPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +18,6 @@ export default function WaitlistPage() {
     const data = {
       name: formData.name,
       email: formData.email,
-      phone: formData.phone,
     };
 
     try {
@@ -77,19 +77,6 @@ export default function WaitlistPage() {
               name="email"
               placeholder="you@example.com"
               value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600"
-              required
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm mb-1">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="e.g. 08012345678"
-              value={formData.phone}
               onChange={handleChange}
               className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600"
               required
