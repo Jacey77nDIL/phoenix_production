@@ -65,7 +65,7 @@ export default function WaitlistPage() {
               placeholder="Your full name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600"
+              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-600 text-black"
               required
             />
           </div>
@@ -78,7 +78,7 @@ export default function WaitlistPage() {
               placeholder="you@example.com"
               value={formData.email}
               onChange={handleChange}
-              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600"
+              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600 text-black focus:ring-2 focus:ring-green-600"
               required
             />
           </div>
@@ -91,7 +91,7 @@ export default function WaitlistPage() {
               placeholder="e.g. 08012345678"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600"
+              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600 text-black focus:ring-2 focus:ring-green-600"
               required
             />
           </div>
