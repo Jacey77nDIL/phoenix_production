@@ -4,12 +4,19 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+origin = os.getenv("origins")
+db_link = os.getenv("DATABASE_URL")
 
 app = FastAPI()
 
 # CORS configuration to allow requests from your frontend (localhost:3000)
 origins = [
-    "http://localhost:3000",  # The frontend is likely running here
+    f"{origin}",  # The frontend is likely running here
 ]
 
 app.add_middleware(
@@ -21,7 +28,7 @@ app.add_middleware(
 )
 
 # PostgreSQL Database URL (Neon)
-DATABASE_URL = "postgresql://neondb_owner:npg_lDsGza36COgZ@ep-royal-river-a2im3tb9-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL = f"{db_link}"
 
 # SQLAlchemy setup for PostgreSQL
 engine = create_engine(DATABASE_URL)

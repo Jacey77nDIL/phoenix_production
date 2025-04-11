@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+require('dotenv').config();
 
 export default function WaitlistPage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function WaitlistPage() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/add_to_waitlist/', {
+      const response = await fetch(`{process.env.BACKEND_LINK}/add_to_waitlist/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
