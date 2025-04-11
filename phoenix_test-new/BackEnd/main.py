@@ -12,6 +12,11 @@ load_dotenv()
 origin = os.getenv("origins")
 db_link = os.getenv("DATABASE_URL")
 
+if __name__ == "__main__":
+    # Make sure FastAPI listens on the environment-provided PORT
+    port = int(os.getenv("PORT", 8000))  # default to 8000 if not provided
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
 app = FastAPI()
 
 # CORS configuration to allow requests from your frontend (localhost:3000)
