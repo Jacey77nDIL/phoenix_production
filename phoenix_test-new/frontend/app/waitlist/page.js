@@ -83,22 +83,6 @@ export default function WaitlistPage() {
             />
           </div>
 
-<<<<<<< HEAD
-=======
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm mb-1">Phone Number</label>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="e.g. 08012345678"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full border border-gray-300 py-3 px-4 rounded-xl focus:outline-none focus:border-green-600 text-black focus:ring-2 focus:ring-green-600"
-              required
-            />
-          </div>
-
->>>>>>> 924960fc11c561e26cd94dc7d9b8c0a530038bd0
           <button
             type="submit"
             className="w-full bg-[#5e852c] text-white py-3 px-10 rounded-xl font-semibold hover:bg-green-800"
