@@ -20,11 +20,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# SQLite Database URL
-DATABASE_URL = "sqlite:///./waitlist.db"
+# PostgreSQL Database URL (Neon)
+DATABASE_URL = "postgresql://neondb_owner:npg_lDsGza36COgZ@ep-royal-river-a2im3tb9-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require"
 
-# SQLAlchemy setup
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# SQLAlchemy setup for PostgreSQL
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
 
@@ -36,7 +36,6 @@ class Waitlist(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     email = Column(String)
-    phone = Column(String)
 
 
 # Create tables in the database (if not already created)
@@ -48,7 +47,6 @@ Base.metadata.create_all(bind=engine)
 class WaitlistCreate(BaseModel):
     name: str
     email: str
-    phone: str
 
 
 @app.post("/add_to_waitlist/")
@@ -58,7 +56,6 @@ async def add_to_waitlist(entry: WaitlistCreate):
         new_entry = Waitlist(
             name=entry.name,
             email=entry.email,
-            phone=entry.phone,
         )
         db.add(new_entry)
         db.commit()
