@@ -22,7 +22,7 @@ export default function WaitlistPage() {
     };
 
     try {
-      const response = await fetch(`${process.env.BACKEND_LINK}/add_to_waitlist/`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_LINK}/add_to_waitlist/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
