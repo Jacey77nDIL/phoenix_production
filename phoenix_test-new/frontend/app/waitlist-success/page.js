@@ -13,9 +13,9 @@ export default function WaitlistSuccessPage() {
 
       {/* Success Content */}
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
-        <h1 className="text-3xl font-bold text-green-700 mb-4">You're on the wait list!</h1>
+        <h1 className="text-3xl font-bold text-green-700 mb-4">You&apos;re on the wait list!</h1>
         <p className="text-gray-700 mb-6">
-          Thank you for your interest in our e-commerce platform. We've added you to our wait list and
+          Thank you for your interest in our e-commerce platform. We&apos;ve added you to our wait list and
           will notify you as soon as we`re ready for you.
         </p>
         <Link href="/">
