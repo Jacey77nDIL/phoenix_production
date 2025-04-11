@@ -20,11 +20,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# SQLite Database URL
-DATABASE_URL = "sqlite:///./waitlist.db"
+# PostgreSQL Database URL (Neon)
+DATABASE_URL = "postgresql://neondb_owner:npg_lDsGza36COgZ@ep-royal-river-a2im3tb9-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require"
 
-# SQLAlchemy setup
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+# SQLAlchemy setup for PostgreSQL
+engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
 
